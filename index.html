@@ -229,7 +229,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/19/asp-net-core-使用-docker-中的-Exceptionless-实现日志记录/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/13/asp-net-core-使用-docker-中的-Exceptionless-实现日志记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zeng ande">
@@ -248,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/19/asp-net-core-使用-docker-中的-Exceptionless-实现日志记录/" itemprop="url">asp.net core 使用 docker 中的 Exceptionless 实现日志记录</a></h1>
+                <a class="post-title-link" href="/2018/08/13/asp-net-core-使用-docker-中的-Exceptionless-实现日志记录/" itemprop="url">asp.net core 使用 docker 中的 Exceptionless 实现日志记录</a></h1>
         
 
         <div class="post-meta">
@@ -260,8 +260,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-19T15:49:06+08:00">
-                2019-04-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-13T16:04:00+08:00">
+                2018-08-13
               </time>
             
 
@@ -299,28 +299,15 @@
 
       
         
-          
-            <hr>
-<h1 id="asp-net-core-使用-docker-中的-Exceptionless-实现日志记录"><a href="#asp-net-core-使用-docker-中的-Exceptionless-实现日志记录" class="headerlink" title="asp.net core 使用 docker 中的 Exceptionless 实现日志记录"></a>asp.net core 使用 docker 中的 Exceptionless 实现日志记录</h1><h2 id="在-docker-中运行-Exceptionless"><a href="#在-docker-中运行-Exceptionless" class="headerlink" title="在 docker 中运行 Exceptionless"></a>在 docker 中运行 Exceptionless</h2><p><code>docker-compose.yml</code>的内容：<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3.4'</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  api:</span></span><br><span class="line"><span class="attr">    depends_on:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">elasticsearch</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">exceptionless/api-ci:latest</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="attr">      AppMode:</span> <span class="string">Development</span></span><br><span class="line"><span class="attr">      ConnectionStrings__Elasticsearch:</span> <span class="attr">http://elasticsearch:9200</span></span><br><span class="line"><span class="attr">      ConnectionStrings__Redis:</span> <span class="string">redis,abortConnect=false</span></span><br><span class="line"><span class="attr">      RunJobsInProcess:</span> <span class="string">'false'</span></span><br><span class="line"><span class="attr">      StorageFolder:</span> <span class="string">/app/storage</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">9100</span><span class="string">:80</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="attr">      - appdata:</span><span class="string">/app/storage</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  jobs:</span></span><br><span class="line"><span class="attr">    depends_on:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">api</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">exceptionless/job-ci:latest</span></span><br><span class="line"><span class="attr">    command:</span> <span class="string">run-all</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="attr">      AppMode:</span> <span class="string">Development</span></span><br><span class="line"><span class="attr">      ConnectionStrings__Elasticsearch:</span> <span class="attr">http://elasticsearch:9200</span></span><br><span class="line"><span class="attr">      ConnectionStrings__Redis:</span> <span class="string">redis,abortConnect=false</span></span><br><span class="line"><span class="attr">      StorageFolder:</span> <span class="string">/app/storage</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="attr">      - appdata:</span><span class="string">/app/storage</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  ui:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">exceptionless/ui-ci:latest</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="attr">      AppMode:</span> <span class="string">Development</span></span><br><span class="line"><span class="attr">      BaseUrl:</span> <span class="attr">http://ex-api.localtest.me:5000</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">8080</span><span class="string">:80</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  elasticsearch:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">slideroom/elasticsearch:98</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line">      <span class="string">bootstrap.memory_lock:</span> <span class="string">'true'</span></span><br><span class="line">      <span class="string">discovery.type:</span> <span class="string">single-node</span></span><br><span class="line"><span class="attr">      ES_JAVA_OPTS:</span> <span class="string">'-Xms512m -Xmx512m'</span></span><br><span class="line">      <span class="string">xpack.security.enabled:</span> <span class="string">'false'</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">9200</span><span class="string">:9200</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">9300</span><span class="string">:9300</span></span><br><span class="line"><span class="attr">    ulimits:</span></span><br><span class="line"><span class="attr">      memlock:</span></span><br><span class="line"><span class="attr">        soft:</span> <span class="bullet">-1</span> </span><br><span class="line"><span class="attr">        hard:</span> <span class="bullet">-1</span></span><br><span class="line"><span class="attr">    volumes:</span></span><br><span class="line"><span class="attr">      - esdata:</span><span class="string">/usr/share/elasticsearch/data</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># kibana:</span></span><br><span class="line">  <span class="comment">#   depends_on:</span></span><br><span class="line">  <span class="comment">#     - elasticsearch</span></span><br><span class="line">  <span class="comment">#   image: slideroom/kibana:116</span></span><br><span class="line">  <span class="comment">#   ports:</span></span><br><span class="line">  <span class="comment">#     - 5601:5601</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  redis:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="attr">redis:alpine</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">6379</span><span class="string">:6379</span></span><br><span class="line"> </span><br><span class="line"><span class="attr">volumes:</span></span><br><span class="line"><span class="attr">  esdata:</span></span><br><span class="line"><span class="attr">    driver:</span> <span class="string">local</span></span><br><span class="line"><span class="attr">  appdata:</span></span><br><span class="line"><span class="attr">    driver:</span> <span class="string">local</span></span><br></pre></td></tr></table></figure></p>
-<p>在 <code>docker-compose.yml</code> 文件目录下执行 <code>docker-compose up</code> 命令。<br>运行成功后可以在 &lt;本地ip&gt;:5100 访问UI</p>
-<h2 id="使用本地-Exceptionless-的配置"><a href="#使用本地-Exceptionless-的配置" class="headerlink" title="使用本地 Exceptionless 的配置"></a>使用本地 Exceptionless 的配置</h2><ol>
-<li>创建新的账号并登录 Exceptionless。</li>
-<li>创建项目，获得 api 密钥。</li>
-<li>引用 nuget包，程序包管理器控制台执行 <code>Install-Package Exceptionless.AspNetCore</code>，也可以从 Nuget 上安装强名称程序包 <code>Exceptionless.AspNetCore.Signed</code>。</li>
-<li><p>appSettings.json 的配置</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">"Exceptionless": &#123;</span><br><span class="line">    // api 密钥</span><br><span class="line">    "ApiKey": "xDCAoTAteqTbscdJeBDCjMoKbshQYUyC7khhKFhc",</span><br><span class="line">    // api 暴露的地址</span><br><span class="line">    "ServerUrl": "http://localhost:5000",</span><br><span class="line">    "DefaultData": &#123;</span><br><span class="line">      "JSON_OBJECT": "&#123; \"Name\": \"Blake\" &#125;",</span><br><span class="line">      "Boolean": true,</span><br><span class="line">      "Number": 1,</span><br><span class="line">      "Array": "1,2,3"</span><br><span class="line">    &#125;,</span><br><span class="line">    "DefaultTags": [ "xplat" ],</span><br><span class="line">    "Settings": &#123;</span><br><span class="line">      "FeatureXYZEnabled": false</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>StartUp.cs 的配置。</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Configure</span>(<span class="params">IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory</span>) </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    app.UseExceptionless(Configuration);</span><br><span class="line">    <span class="comment">//OR</span></span><br><span class="line">    <span class="comment">//app.UseExceptionless(new ExceptionlessClient(c =&gt; c.ReadFromConfiguration(Configuration)));</span></span><br><span class="line">    <span class="comment">//OR</span></span><br><span class="line">    <span class="comment">// app.UseExceptionless("W79xLqh2B79nm7LZvfAlH47Fxggk9tAaoIvJH3A0");</span></span><br><span class="line">    <span class="comment">//OR</span></span><br><span class="line">    <span class="comment">//loggerFactory.AddExceptionless("API_KEY_HERE");</span></span><br><span class="line">    <span class="comment">//OR</span></span><br><span class="line">    <span class="comment">//loggerFactory.AddExceptionless((c) =&gt; c.ReadFromConfiguration(Configuration));</span></span><br><span class="line"></span><br><span class="line">    loggerFactory.AddExceptionless();</span><br><span class="line">    loggerFactory.AddConsole(Configuration.GetSection(<span class="string">"Logging"</span>));</span><br><span class="line">    loggerFactory.AddDebug();</span><br><span class="line">    app.UseMvc();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>以上配置就可以自动将所有未处理异常发送到 Exceptionless 了，也可以通过 <code>ex.ToExceptionless().Submit()</code> 向 Exceptionless 发送已处理的异常。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="http://www.cnblogs.com/edisonchou/p/exceptionless_foundation_and_quick_start.html" target="_blank" rel="noopener">.NET Core微服务之基于Exceptionless实现分布式日志记录 - Edison Chou</a></li>
-<li><a href="https://github.com/exceptionless/Exceptionless.Net/tree/master/samples" target="_blank" rel="noopener">Exceptionless 官方示例</a></li>
-</ol>
-
-          
+          <p>本文展示使用 docker 部署 Exceptionless ，并在 asp.net core mvc 项目中使用 Exceptionless 完成日志记录。</p>
+<h2 id="在-docker-中运行-Exceptionless"><a href="#在-docker-中运行-Exceptionless" class="headerlink" title="在 docker 中运行 Exceptionless"></a>在 docker 中运行 Exceptionless</h2><p><code>docker-compose.yml</code>的内容：<br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/13/asp-net-core-使用-docker-中的-Exceptionless-实现日志记录/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -367,7 +354,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/19/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/10/asp-net-core-api网关-实时性能监控/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zeng ande">
@@ -386,7 +373,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/19/hello-world/" itemprop="url">Hello World</a></h1>
+                <a class="post-title-link" href="/2018/08/10/asp-net-core-api网关-实时性能监控/" itemprop="url">asp.net core api网关 实时性能监控</a></h1>
         
 
         <div class="post-meta">
@@ -398,8 +385,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-19T15:03:36+08:00">
-                2019-04-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-10T17:42:00+08:00">
+                2018-08-10
               </time>
             
 
@@ -437,18 +424,15 @@
 
       
         
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
+          <p>提要：使用 docker 运行 InfluxDB、Grafana 实时监控 api 网关性能。</p>
+<h2 id="Dockerfile-运行-InfluxDB、Grafana"><a href="#Dockerfile-运行-InfluxDB、Grafana" class="headerlink" title="Dockerfile 运行 InfluxDB、Grafana"></a>Dockerfile 运行 InfluxDB、Grafana</h2><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">influxdb:</span></span><br><span class="line"><span class="attr">image:</span> <span class="string">influxdb</span></span><br><span class="line"><span class="attr">  ports:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">"8086:8086"</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">"8083:8083"</span></span><br><span class="line"><span class="attr">  environment:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">INFLUXDB_DB=TogetherAppMetricsDB</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">INFLUXDB_ADMIN_ENABLED=true</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">INFLUXDB_ADMIN_USER=admin</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">INFLUXDB_ADMIN_PASSWORD=admin</span></span><br><span class="line"><span class="attr">grafana:</span></span><br><span class="line"><span class="attr">  image:</span> <span class="string">grafana/grafana</span></span><br><span class="line"><span class="attr">  ports:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">"3000:3000"</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/10/asp-net-core-api网关-实时性能监控/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -536,6 +520,15 @@
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
             
 
           </nav>
