@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="zeng ande">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、Centos安装配置安装配置 master步骤省略 配置 master网络配置 开启网卡1vi /etc/sysconfig/network-scripts/ifcfg-ens33   将 ONBOOT 设置为 yes，保存重启 reboot  安装 net-tools1yum install net-tools   等待安装完，执行 ifconfig 得到 master的ip地址 192.1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VMware 安装 Centos K8S 集群">
+<meta property="og:url" content="http://yoursite.com/2019/05/10/VMware-安装-Centos-K8S-集群/index.html">
+<meta property="og:site_name" content="ande&#39;s world">
+<meta property="og:description" content="一、Centos安装配置安装配置 master步骤省略 配置 master网络配置 开启网卡1vi /etc/sysconfig/network-scripts/ifcfg-ens33   将 ONBOOT 设置为 yes，保存重启 reboot  安装 net-tools1yum install net-tools   等待安装完，执行 ifconfig 得到 master的ip地址 192.1">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2019/05/10/VMware-安装-Centos-K8S-集群/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/10/VMware-安装-Centos-K8S-集群/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/10/VMware-安装-Centos-K8S-集群/3.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/10/VMware-安装-Centos-K8S-集群/4.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/10/VMware-安装-Centos-K8S-集群/5.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/10/VMware-安装-Centos-K8S-集群/6.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/10/VMware-安装-Centos-K8S-集群/5.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/10/VMware-安装-Centos-K8S-集群/8.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/10/VMware-安装-Centos-K8S-集群/9.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/10/VMware-安装-Centos-K8S-集群/10.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/10/VMware-安装-Centos-K8S-集群/11.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/10/VMware-安装-Centos-K8S-集群/12.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/10/VMware-安装-Centos-K8S-集群/13.png">
+<meta property="og:updated_time" content="2019-05-10T02:57:51.641Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VMware 安装 Centos K8S 集群">
+<meta name="twitter:description" content="一、Centos安装配置安装配置 master步骤省略 配置 master网络配置 开启网卡1vi /etc/sysconfig/network-scripts/ifcfg-ens33   将 ONBOOT 设置为 yes，保存重启 reboot  安装 net-tools1yum install net-tools   等待安装完，执行 ifconfig 得到 master的ip地址 192.1">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/10/VMware-安装-Centos-K8S-集群/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/10/VMware-安装-Centos-K8S-集群/">
+
+
+
+
+
+  <title>VMware 安装 Centos K8S 集群 | ande's world</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ande's world</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">hello world!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/10/VMware-安装-Centos-K8S-集群/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zeng ande">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/20161022194719.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ande's world">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">VMware 安装 Centos K8S 集群</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-10T09:39:11+08:00">
+                2019-05-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一、Centos安装配置"><a href="#一、Centos安装配置" class="headerlink" title="一、Centos安装配置"></a>一、Centos安装配置</h2><h3 id="安装配置-master"><a href="#安装配置-master" class="headerlink" title="安装配置 master"></a>安装配置 master</h3><p><em>步骤省略</em><br><img src="/2019/05/10/VMware-安装-Centos-K8S-集群/1.png" alt="avatar"></p>
+<h3 id="配置-master"><a href="#配置-master" class="headerlink" title="配置 master"></a>配置 master</h3><h4 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h4><ol>
+<li>开启网卡<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-ens33</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>将 <code>ONBOOT</code> 设置为 <code>yes</code>，保存重启 <code>reboot</code><br><img src="/2019/05/10/VMware-安装-Centos-K8S-集群/2.png" alt="avatar"></p>
+<ol start="2">
+<li>安装 <code>net-tools</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install net-tools</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>等待安装完，执行 <code>ifconfig</code> 得到 master的ip地址 <code>192.168.203.135</code><br><img src="/2019/05/10/VMware-安装-Centos-K8S-集群/3.png" alt="avatar"></p>
+<ol start="3">
+<li>修改hostname<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostnamectl set-hostname centos-master</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>设置 hostname 为 <code>centos-master</code>，运行 <code>hostname</code> 验证输出是否为 <code>centos-master</code></p>
+<ol start="4">
+<li>关闭SELinux<ul>
+<li>永久关闭（推荐）：<code>vi /etc/selinux/config</code> 设置 <code>SELINUX=disabled</code>，保存重启服务器</li>
+<li>临时关闭：执行 <code>setenforce 0</code></li>
+</ul>
+</li>
+<li><p>关闭防火墙禁用swap</p>
+<ul>
+<li><p>关闭防火墙</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld</span><br><span class="line">systemctl disable firewalld</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>永久禁用swap<br><code>vi /etc/fstab</code> 注释最后一行<br><img src="/2019/05/10/VMware-安装-Centos-K8S-集群/4.png" alt="avatar"></p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="安装配置最新版docker"><a href="#安装配置最新版docker" class="headerlink" title="安装配置最新版docker"></a>安装配置最新版docker</h4><p>使用 powershell 连接服务器<code>ssh root@192.168.203.135</code><br><img src="/2019/05/10/VMware-安装-Centos-K8S-集群/5.png" alt="avatar"></p>
+<ol>
+<li>安装docker：<a href="https://docs.docker.com/install/linux/docker-ce/centos/" target="_blank" rel="noopener">参考官方文档</a>*<br><img src="/2019/05/10/VMware-安装-Centos-K8S-集群/6.png" alt="avatar"><br>安装完毕后启动docker<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker</span><br><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>执行 <code>docker -v</code> 查看版本 <code>Docker version 18.09.6, build 481bc77156</code></p>
+<ol start="2">
+<li>配置加速：使用<a href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors" target="_blank" rel="noopener">阿里云镜像加速</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /etc/docker</span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-&apos;EOF&apos;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [&quot;你的地址&quot;]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="安装k8s"><a href="#安装k8s" class="headerlink" title="安装k8s"></a>安装k8s</h3><ol>
+<li><p>设置安装源（使用aliyun的源）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cat&gt;&gt;/etc/yum.repos.d/kubrenetes.repo&lt;&lt;EOF</span><br><span class="line">[kubernetes]</span><br><span class="line">name=Kubernetes Repo</span><br><span class="line">baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/</span><br><span class="line">gpgcheck=0</span><br><span class="line">gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">yum install -y kubelet kubeadm kubectl</span><br><span class="line"></span><br><span class="line">systemctl enable kubelet</span><br><span class="line"></span><br><span class="line">kubeadm init \</span><br><span class="line">	--image-repository registry.aliyuncs.com/google_containers \</span><br><span class="line">    --pod-network-cidr=10.244.0.0/16 \</span><br><span class="line">    --ignore-preflight-errors=cri \</span><br><span class="line">    --kubernetes-version=1.14.1</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>出现错误<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ERROR FileContent--proc-sys-net-bridge-bridge-nf-call-iptables]: /proc/sys/net/bridge/bridge-nf-call-iptables contents are not set to 1</span><br><span class="line">[preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`</span><br></pre></td></tr></table></figure></p>
+<p>执行 <code>echo &quot;1&quot; &gt;/proc/sys/net/bridge/bridge-nf-call-iptables</code>， 重新执行 <code>kubeadm init...</code><br><img src="/2019/05/10/VMware-安装-Centos-K8S-集群/5.png" alt="avatar"></p>
+<ol start="3">
+<li>等待安装成功后重启 <code>reboot</code></li>
+</ol>
+<h3 id="安装-node"><a href="#安装-node" class="headerlink" title="安装 node"></a>安装 node</h3><p>在 Vmware 中选中 master 虚拟机，选择顶部 <code>虚拟机-管理-克隆</code> 从master克隆虚拟机<br><img src="/2019/05/10/VMware-安装-Centos-K8S-集群/8.png" alt="avatar"><br><img src="/2019/05/10/VMware-安装-Centos-K8S-集群/9.png" alt="avatar"><br><img src="/2019/05/10/VMware-安装-Centos-K8S-集群/10.png" alt="avatar"><br>修改node hostname <code>hostnamectl set-hostname centos-node1</code><br>启动 <code>centos-master</code>、<code>centos-node1</code></p>
+<h3 id="将node加入master"><a href="#将node加入master" class="headerlink" title="将node加入master"></a>将node加入master</h3><h4 id="master-中的操作"><a href="#master-中的操作" class="headerlink" title="master 中的操作"></a>master 中的操作</h4><p>在 master 中执行 <code>kubectl get nodes</code>，得到错误 <code>The connection to the server localhost:8080 was refused - did you specify the right host or port?</code>，执行以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p $HOME/.kube</span><br><span class="line">sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config</span><br><span class="line">sudo chown $(id -u):$(id -g) $HOME/.kube/config</span><br></pre></td></tr></table></figure></p>
+<p>再次执行 <code>kubectl get nodes</code><br><img src="/2019/05/10/VMware-安装-Centos-K8S-集群/11.png" alt="avatar"></p>
+<p>执行 <code>kubeadm token create --print-join-command</code> 得到join命令</p>
+<h4 id="node1-中的操作"><a href="#node1-中的操作" class="headerlink" title="node1 中的操作"></a>node1 中的操作</h4><p>执行上一步得到的命令，join error 可以使用 <code>kubeadm reset</code> 再次执行join命令<br><img src="/2019/05/10/VMware-安装-Centos-K8S-集群/12.png" alt="avatar"></p>
+<h4 id="查看nodes"><a href="#查看nodes" class="headerlink" title="查看nodes"></a>查看nodes</h4><p>master <code>kubectl get nodes</code><br><img src="/2019/05/10/VMware-安装-Centos-K8S-集群/13.png" alt="avatar"><br>可以看到都是 <code>NotReady</code> 状态，初始化网络插件 <code>Flannel</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/a70459be0084506e4ec919aa1c114638878db11b/Documentation/kube-flannel.yml</span><br></pre></td></tr></table></figure></p>
+<p>等待一段时间，再次查看 <code>kubectl get nodes</code></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/19/博客文章（持续更新）/" rel="next" title="学习文章（持续更新）">
+                <i class="fa fa-chevron-left"></i> 学习文章（持续更新）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/20161022194719.jpg" alt="zeng ande">
+            
+              <p class="site-author-name" itemprop="name">zeng ande</p>
+              <p class="site-description motion-element" itemprop="description">想起什么写什么</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zengande" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:zengande@outlook.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Centos安装配置"><span class="nav-number">1.</span> <span class="nav-text">一、Centos安装配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装配置-master"><span class="nav-number">1.1.</span> <span class="nav-text">安装配置 master</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-master"><span class="nav-number">1.2.</span> <span class="nav-text">配置 master</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#网络配置"><span class="nav-number">1.2.1.</span> <span class="nav-text">网络配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装配置最新版docker"><span class="nav-number">1.2.2.</span> <span class="nav-text">安装配置最新版docker</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装k8s"><span class="nav-number">1.3.</span> <span class="nav-text">安装k8s</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-node"><span class="nav-number">1.4.</span> <span class="nav-text">安装 node</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将node加入master"><span class="nav-number">1.5.</span> <span class="nav-text">将node加入master</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#master-中的操作"><span class="nav-number">1.5.1.</span> <span class="nav-text">master 中的操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#node1-中的操作"><span class="nav-number">1.5.2.</span> <span class="nav-text">node1 中的操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看nodes"><span class="nav-number">1.5.3.</span> <span class="nav-text">查看nodes</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zeng ande</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
